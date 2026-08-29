@@ -6,10 +6,12 @@ public class Main {
 
         List<Double> list = new ArrayList<>();
 
+        System.out.println("Statistics Calculator\n1) Enter Data \n2) Press Enter\n3) Finished? Press Enter");
+    
         while (true) {
             String input = scanner.nextLine();
             
-            if (input.contains(" ")) {
+            if (input.contains(" ") || input.equals("")) {
                 break;
             }
 
