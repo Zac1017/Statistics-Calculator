@@ -76,7 +76,14 @@ public class Statistics {
 
     public double q3(){
         int middle = size / 2;
-        List<Double> secondHalf = list.subList(middle, size);
+
+        List<Double> secondHalf;
+
+        if (size % 2 == 1) {
+            secondHalf = list.subList(middle + 1, size);
+        } else {
+            secondHalf = list.subList(middle, size);
+        }
 
         int halfMiddle = secondHalf.size() / 2;
 
@@ -102,6 +109,29 @@ public class Statistics {
         return Math.sqrt(sumSquareDifference / (size - 1));
     }
 
+    public double sum(){
+        double sum = 0;
+        for (double point : list){
+            sum += point;
+        }
+        return sum;
+    }
+
+    public List<Double[]> zScores(){
+        double sd = standardDeviation();
+        double mean = mean();
+        List<Double[]> listZ = new ArrayList<>();
+
+        for (double point : list){
+            listZ.add(new Double[] {point, (point - mean) / sd});
+        }
+
+        return listZ;
+    }
+
+    public int count(){
+        return size;
+    }
   
 }
 /*
