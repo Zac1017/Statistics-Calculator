@@ -90,8 +90,20 @@ public class Statistics {
     public double iqr(){
         return q3() - q1();
     }
-}
 
+    //Uses Bessel's Correction (n-1) in the denom
+    public double standardDeviation(){
+        double mean = mean();
+        double sumSquareDifference = 0;
+        for (double point : list){
+            sumSquareDifference += Math.pow(point - mean, 2);
+        }
+
+        return Math.sqrt(sumSquareDifference / (size - 1));
+    }
+
+  
+}
 /*
 mean, median, mode, range, IQR, standard deviation, q1, q3, sum, count, z-scores
 five number summary -> min, q1, median, q3, max
